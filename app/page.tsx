@@ -20,7 +20,20 @@ type Teacher = {
 };
 
 export default function DashboardPage() {
-  const [teachers, setTeachers] = useState<Teacher[]>(teacherData); // Teacher list
+  const normalizeSchedule = (schedule: { [key: string]: string[] | undefined }) => {
+    const normalized: { [key: string]: string[] } = {};
+    Object.keys(schedule).forEach((key) => {
+      normalized[key] = schedule[key] ?? [];
+    });
+    return normalized;
+  };
+
+  const normalizedTeachers: Teacher[] = teacherData.map((teacher) => ({
+    ...teacher,
+    schedule: normalizeSchedule(teacher.schedule),
+  }));
+
+  const [teachers, setTeachers] = useState<Teacher[]>(normalizedTeachers); // Teacher list
   const [showModal, setShowModal] = useState(false); // Modal state
 
   // Add new teacher handler
