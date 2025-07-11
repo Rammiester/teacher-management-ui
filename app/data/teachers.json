@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+91 9876543210",
+    "qualifications": ["B.Ed", "M.Sc Physics"],
+    "schedule": {
+      "monday": ["9:00 AM - 10:00 AM", "2:00 PM - 3:00 PM"],
+      "wednesday": ["11:00 AM - 12:00 PM"]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "phone": "+91 9123456789",
+    "qualifications": ["B.Ed", "M.A English"],
+    "schedule": {
+      "tuesday": ["10:00 AM - 11:00 AM"],
+      "thursday": ["1:00 PM - 2:00 PM"]
+    }
+  }
+]
