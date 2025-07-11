@@ -1,5 +1,4 @@
 import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
 import "./globals.css";
 
 export default function RootLayout({
@@ -16,7 +15,6 @@ export default function RootLayout({
         {/* Main content area */}
         <div className="flex-1 flex flex-col h-screen overflow-y-auto">
           {/* Top navbar */}
-          <Header />
           <main className="flex-1 p-6">{children}</main>
         </div>
       </body>
