@@ -1,9 +1,23 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
+/* Base typography & background color */
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background-color: #f9fafb;
+  color: #1f2937;
 }
 
-body {
-  font-family: system-ui, sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.5px;
+}
+
+a {
+  transition: all 0.2s ease;
+}
+
+button {
+  transition: all 0.2s ease;
 }

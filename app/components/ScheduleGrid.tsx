@@ -10,15 +10,22 @@ export default function ScheduleGrid({ schedule }: ScheduleProps) {
         {Object.entries(schedule).map(([day, times]) => (
           <div
             key={day}
-            className="bg-white border border-gray-200 rounded-lg p-4 shadow hover:shadow-md transition-shadow"
+            className="bg-white border border-gray-200 rounded-xl p-4 shadow hover:shadow-md transition-shadow"
           >
-            <h4 className="font-semibold text-gray-700 capitalize">{day}</h4>
+            <h4 className="font-semibold text-gray-700 capitalize mb-2">
+              {day}
+            </h4>
             {times.length > 0 ? (
-              <ul className="list-disc list-inside text-gray-600">
+              <div className="flex flex-wrap gap-2">
                 {times.map((time, index) => (
-                  <li key={index}>{time}</li>
+                  <span
+                    key={index}
+                    className="bg-gradient-to-r from-green-400 to-green-600 text-white px-2 py-1 rounded-full text-xs font-medium shadow"
+                  >
+                    {time}
+                  </span>
                 ))}
-              </ul>
+              </div>
             ) : (
               <p className="text-gray-500 italic">No classes</p>
             )}
