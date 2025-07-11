@@ -17,25 +17,27 @@ export default function Sidebar() {
   return (
     <>
       {/* Mobile Hamburger */}
-      <button
-        className="md:hidden fixed top-4 left-4 z-50 bg-purple-600 text-white p-2 rounded shadow-lg"
-        onClick={() => setOpen((v) => !v)}
-        aria-label="Open sidebar"
-      >
-        <svg
-          width="24"
-          height="24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
+      {!open && (
+        <button
+          className="md:hidden fixed top-4 left-4 z-50 bg-purple-600 text-white p-2 rounded shadow-lg"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Open sidebar"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      )}
 
       {/* Sidebar */}
       <aside
