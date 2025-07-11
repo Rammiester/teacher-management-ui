@@ -1,22 +1,38 @@
+"use client";
 import Header from "./components/Header";
 import TeacherCard from "./components/TeacherCard";
 import QualificationsTable from "./components/QualificationsTable";
 import Tabs from "./components/Tabs";
 import ScheduleCalendar from "./components/ScheduleCalendar";
+import AddTeacherModal from "./components/AddTeacherModal";
 import teacherData from "./data/teachers.json";
+import { useState } from "react";
 
 export default function DashboardPage() {
+  const [teachers, setTeachers] = useState(teacherData); // Teacher list
+  const [showModal, setShowModal] = useState(false); // Modal state
+
+  // Add new teacher handler
+  const handleAddTeacher = (newTeacher: (typeof teachers)[0]) => {
+    setTeachers((prev) => [...prev, newTeacher]);
+    setShowModal(false);
+  };
+
   return (
     <div className="flex">
+      {/* Main content */}
       <main className="flex-1 bg-gray-50 min-h-screen p-6">
         <Header
           title="Teacher Dashboard"
           description="Modernized interface for managing teachers, schedules & qualifications."
         />
 
-        {/* Action Buttons */}
+        {/* Buttons */}
         <div className="flex justify-end gap-2 mb-4">
-          <button className="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-md shadow hover:scale-105 transition">
+          <button
+            onClick={() => setShowModal(true)}
+            className="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-md shadow hover:scale-105 transition"
+          >
             + Add Teacher
           </button>
           <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition">
@@ -26,7 +42,7 @@ export default function DashboardPage() {
 
         {/* Teacher Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {teacherData.map((teacher) => (
+          {teachers.map((teacher) => (
             <TeacherCard key={teacher.email} teacher={teacher} />
           ))}
         </div>
@@ -42,11 +58,19 @@ export default function DashboardPage() {
           <Tabs />
         </div>
 
-        {/* Schedule Calendar */}
+        {/* Schedule */}
         <div className="mt-6">
           <ScheduleCalendar />
         </div>
       </main>
+
+      {/* Modal */}
+      {showModal && (
+        <AddTeacherModal
+          onClose={() => setShowModal(false)}
+          onSubmit={handleAddTeacher}
+        />
+      )}
     </div>
   );
 }

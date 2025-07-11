@@ -10,8 +10,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex bg-gray-50 text-gray-800">
+        {/* Sidebar stays persistent */}
         <Sidebar />
+
+        {/* Main content area */}
         <div className="flex-1 flex flex-col min-h-screen">
+          {/* Top navbar */}
           <Header />
           <main className="flex-1 p-6">{children}</main>
         </div>

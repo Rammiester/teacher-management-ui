@@ -1,19 +1,35 @@
-export default function ScheduleCalendar() {
+interface ScheduleCalendarProps {
+  schedule?: {
+    [day: string]: string[];
+  };
+}
+
+export default function ScheduleCalendar({
+  schedule = {
+    Monday: ["Maths", "Physics"],
+    Tuesday: ["English", "Chemistry"],
+    Wednesday: ["Biology", "History"],
+    Thursday: ["PE", "Geography"],
+    Friday: ["Art", "Music"],
+  },
+}: ScheduleCalendarProps) {
   return (
-    <div className="bg-white p-4 rounded-xl shadow">
-      <h3 className="text-lg font-semibold text-gray-800 mb-2">
+    <div className="bg-white rounded-lg shadow p-4 border border-gray-100">
+      <h3 className="text-lg font-semibold text-gray-700 mb-3">
         Weekly Schedule
       </h3>
-      <div className="grid grid-cols-7 gap-2">
-        {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+        {Object.entries(schedule).map(([day, subjects]) => (
           <div
             key={day}
-            className="flex flex-col gap-1 bg-gray-50 rounded-lg p-2 hover:bg-gray-100 transition"
+            className="p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition"
           >
-            <h4 className="text-sm font-medium text-gray-700">{day}</h4>
-            <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
-              9:00 - 10:00 AM
-            </span>
+            <h4 className="font-medium text-purple-700 mb-1">{day}</h4>
+            <ul className="list-disc list-inside text-gray-600">
+              {subjects.map((subject, i) => (
+                <li key={i}>{subject}</li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>

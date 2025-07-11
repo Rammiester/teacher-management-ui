@@ -1,15 +1,17 @@
-interface Teacher {
-  name: string;
-  email: string;
-  phone: string;
-  qualifications: string[];
-}
+"use client";
+import { motion } from "framer-motion";
 
 interface TeacherCardProps {
-  teacher: Teacher;
+  teacher: {
+    name: string;
+    email: string;
+    phone: string;
+    qualifications: string[];
+  };
 }
 
 export default function TeacherCard({ teacher }: TeacherCardProps) {
+  // Extract initials for avatar fallback
   const initials = teacher.name
     .split(" ")
     .map((n) => n[0])
@@ -17,29 +19,33 @@ export default function TeacherCard({ teacher }: TeacherCardProps) {
     .toUpperCase();
 
   return (
-    <div className="bg-white p-4 rounded-xl shadow hover:shadow-md transition transform hover:scale-[1.02]">
-      <div className="flex items-center gap-4">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center text-white font-bold">
-          {initials}
-        </div>
-        <div className="flex-1">
-          <h2 className="text-lg font-semibold text-gray-800">
-            {teacher.name}
-          </h2>
-          <p className="text-gray-500">{teacher.email}</p>
-          <p className="text-gray-500">{teacher.phone}</p>
-          <div className="mt-2 flex gap-2 flex-wrap">
-            {teacher.qualifications.map((q) => (
-              <span
-                key={q}
-                className="px-2 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium"
-              >
-                {q}
-              </span>
-            ))}
-          </div>
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className="bg-white p-4 rounded-lg shadow-md border border-gray-100 flex items-center space-x-4"
+    >
+      {/* Avatar */}
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center text-white font-semibold text-lg">
+        {initials}
+      </div>
+
+      {/* Teacher Info */}
+      <div className="flex-1">
+        <h3 className="text-lg font-semibold text-gray-800">{teacher.name}</h3>
+        <p className="text-sm text-gray-500">{teacher.email}</p>
+        <p className="text-sm text-gray-500">{teacher.phone}</p>
+
+        {/* Qualifications as pill tags */}
+        <div className="mt-2 flex flex-wrap gap-2">
+          {teacher.qualifications.map((q, idx) => (
+            <span
+              key={idx}
+              className="px-2 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs rounded-full shadow"
+            >
+              {q}
+            </span>
+          ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
