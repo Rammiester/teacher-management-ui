@@ -14,7 +14,7 @@ export default function RootLayout({
         <Sidebar />
 
         {/* Main content area */}
-        <div className="flex-1 flex flex-col min-h-screen">
+        <div className="flex-1 flex flex-col h-screen overflow-y-auto">
           {/* Top navbar */}
           <Header />
           <main className="flex-1 p-6">{children}</main>

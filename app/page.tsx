@@ -19,16 +19,16 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex flex-col md:flex-row">
       {/* Main content */}
-      <main className="flex-1 bg-gray-50 min-h-screen p-6">
+      <main className="flex-1 bg-gray-50 min-h-screen p-4 sm:p-6">
         <Header
           title="Teacher Dashboard"
           description="Modernized interface for managing teachers, schedules & qualifications."
         />
 
         {/* Buttons */}
-        <div className="flex justify-end gap-2 mb-4">
+        <div className="flex flex-col sm:flex-row justify-end gap-2 mb-4">
           <button
             onClick={() => setShowModal(true)}
             className="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-md shadow hover:scale-105 transition"
