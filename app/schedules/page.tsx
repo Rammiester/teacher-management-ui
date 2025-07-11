@@ -15,7 +15,14 @@ export default function SchedulesPage() {
             <h2 className="text-2xl font-semibold text-gray-700 mb-2">
               {teacher.name}
             </h2>
-            <ScheduleGrid schedule={teacher.schedule} />
+            <ScheduleGrid
+              schedule={{
+                monday: teacher.schedule.monday ?? [],
+                tuesday: teacher.schedule.tuesday ?? [],
+                wednesday: teacher.schedule.wednesday ?? [],
+                thursday: teacher.schedule.thursday ?? [],
+              }}
+            />
           </div>
         ))}
       </div>

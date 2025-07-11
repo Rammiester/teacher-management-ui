@@ -5,10 +5,14 @@ import Toast from "./Toast"; // ✅ make sure Toast.tsx exists
 interface AddTeacherModalProps {
   onClose: () => void;
   onSubmit: (teacher: {
+    id: number;
     name: string;
     email: string;
     phone: string;
     qualifications: string[];
+    schedule: {
+      [key: string]: string[];
+    };
   }) => void;
 }
 
@@ -38,6 +42,7 @@ export default function AddTeacherModal({
 
     setTimeout(() => {
       onSubmit({
+        id: Date.now(), // or use a better unique id generator if available
         name,
         email,
         phone,
@@ -45,6 +50,7 @@ export default function AddTeacherModal({
           .split(",")
           .map((q) => q.trim())
           .filter(Boolean),
+        schedule: {}, // default empty schedule
       });
       setLoading(false);
       setSuccess(true);

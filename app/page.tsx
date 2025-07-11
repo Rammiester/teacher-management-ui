@@ -8,15 +8,27 @@ import AddTeacherModal from "./components/AddTeacherModal";
 import teacherData from "./data/teachers.json";
 import { useState } from "react";
 
+type Teacher = {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  qualifications: string[];
+  schedule: {
+    [key: string]: string[];
+  };
+};
+
 export default function DashboardPage() {
-  const [teachers, setTeachers] = useState(teacherData); // Teacher list
+  const [teachers, setTeachers] = useState<Teacher[]>(teacherData); // Teacher list
   const [showModal, setShowModal] = useState(false); // Modal state
 
   // Add new teacher handler
-  const handleAddTeacher = (newTeacher: (typeof teachers)[0]) => {
+  const handleAddTeacher = (newTeacher: Teacher) => {
     setTeachers((prev) => [...prev, newTeacher]);
     setShowModal(false);
   };
+  
 
   return (
     <div className="flex flex-col md:flex-row">
