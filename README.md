@@ -18,9 +18,9 @@ You can view the live project here:
 
 ---
 
-## Loom Video
+## Youtube Video
 
-_Add your Loom video link here if required by your assignment guidelines._
+[https://www.youtube.com/watch?v=FdJMf2RbwRc](https://www.youtube.com/watch?v=FdJMf2RbwRc)
 
 ---
 
